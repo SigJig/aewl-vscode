@@ -3,17 +3,42 @@
 	"name": "AEWL",
 	"patterns": [
 		{
-			"include": "#keywords"
+			"include": "#comments"
 		},
 		{
 			"include": "#strings"
+		},
+		{
+			"include": "#keywords"
+		},
+		{
+			"include": "#expressions"
+		},
+		{
+			"include": "#operators"
+		},
+		{
+			"include": "#characters"
 		}
 	],
 	"repository": {
+		"comments": {
+			"patterns": [
+				{
+					"name": "comment.line.double-slash.aewl",
+					"match": "\\/\\/[^\\n]*"
+				},
+				{
+					"name": "comment.block.aewl",
+					"begin": "\\/\\*",
+					"end": "\\*\\/"
+				}
+			]
+		},
 		"keywords": {
 			"patterns": [{
-				"name": "keyword.control.aewl",
-				"match": "\\b(if|while|for|return)\\b"
+				"name": "storage.type.aewl",
+				"match": "\\b(widget|resource|display)\\b"
 			}]
 		},
 		"strings": {
@@ -24,6 +49,38 @@
 				{
 					"name": "constant.character.escape.aewl",
 					"match": "\\\\."
+				}
+			]
+		},
+		"expressions": {
+			"patterns": [
+				{
+					"name": "constant.other.aewl",
+					"match": "\\$[a-zA-Z_]\\w+\\b"
+				},
+				{
+					"name": "variable.other.aewl",
+					"match": "\\b([a-zA-Z_]\\w+)\\b"
+				},
+				{
+					"name": "constant.numeric.aewl",
+					"match": "\\b[+-]?(\\.\\d+|\\d+(\\.\\d+)?)([eE][+-]?\\d+)?\\%?\\b"
+				}
+			]
+		},
+		"operators": {
+			"patterns": [
+				{
+					"name": "keyword.operator.aewl",
+					"match": "\\+|-\\|\\/|\\*|%"
+				}
+			]
+		},
+		"characters": {
+			"patterns": [
+				{
+					"name": "punctuation.definition.aewl",
+					"match": "\\{|\\}|\\(|\\)|;|\\[|\\]|,"
 				}
 			]
 		}
